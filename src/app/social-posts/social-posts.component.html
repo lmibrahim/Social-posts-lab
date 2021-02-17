@@ -1,0 +1,11 @@
+<!-- *ngIf="!showForm" hides button when the form shows up -->
+
+<button (click)="toggleForm()" *ngIf="!showForm">Show Form</button>
+<app-post-form (submitted)="onSubmit($event)" *ngIf="showForm"></app-post-form>
+<ol class="posts-container">
+  <app-post
+    *ngFor="let post of myPosts; index as i"
+    [postObject]="post"
+    (deleted)="onDelete(i)"
+  ></app-post>
+</ol>
